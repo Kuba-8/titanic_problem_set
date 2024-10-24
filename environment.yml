@@ -1,0 +1,13 @@
+name: polars_cookbook
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - seaborn
+  - matplotlib==3.7.1
+  - numpy==1.22.3
+  - pandas==1.4.2
+  - jupyter==1.0.0
+  - sklearn
+  - wordcloud
+  - pathlib
