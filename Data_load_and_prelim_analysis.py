@@ -20,11 +20,11 @@ def summarize_data(d_frame, name_of_df="Data Frame"):
     """
     print(f"Overview of {name_of_df}")
     print(f"The first 5 rows of {name_of_df}")
-    display(d_frame.head())
+    print(d_frame.head())
     print(f"{name_of_df} information")
-    display(d_frame.info())
+    d_frame.info()
     print(f"Summary statistics for {name_of_df}")
-    display(d_frame.describe())
+    print(d_frame.describe())
 
 summarize_data(train_df)
 summarize_data(test_df)
@@ -44,8 +44,8 @@ def missing_summary(d_frame):
     tt = pd.concat([total, percent], axis=1, keys=['Total', 'Percent'])
     types = []
     for col in d_frame.columns:
-    dtype = str(d_frame[col].dtype)
-    types.append(dtype)
+        dtype = str(d_frame[col].dtype)
+        types.append(dtype)
     tt['Types'] = types
     missings_d_frame = np.transpose(tt)
     return missings_d_frame
@@ -58,7 +58,7 @@ missing_summary(test_df)
 def degree_of_uniformity(d_frame):
     """
     
-    Function for the percentage contribution of the most frequent value within a particular column
+    Function for the percentage contribution and value count of the most frequent value within a particular column
     
     """
     total = d_frame.count()
@@ -83,6 +83,10 @@ def degree_of_uniformity(d_frame):
     uniformity_calc = np.transpose(tt)
     return uniformity_calc
 
+degree_of_uniformity(train_df)
+degree_of_uniformity(test_df)
+
+
 
 
 def unique_value_count(d_frame):
@@ -102,3 +106,5 @@ def unique_value_count(d_frame):
     uniques_total = np.transpose(tt)
     return uniques_total
 
+unique_value_count(train_df)
+unique_value_count(test_df)
