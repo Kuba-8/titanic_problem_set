@@ -276,3 +276,14 @@ def train_and_predict(train_X, train_Y, valid_X,
     preds = clf.predict(valid_X)
     
     return preds_tr, preds
+
+#
+def plot_count_pairs(data_df, feature, title, hue="set"):
+    color_list = ["#A5D7E8", "#576CBC", "#19376D", "#0b2447"]
+    f, ax = plt.subplots(1, 1, figsize=(8, 4))
+    sns.countplot(x=feature, data=data_df, hue=hue, palette= color_list)
+    plt.grid(color="black", linestyle="-.", linewidth=0.5, axis="y", which="major")
+    ax.set_title(f"Number of passengers / {title}")
+    filename = f"exports/{feature}_{title}_count.png"
+    plt.savefig(filename, dpi=300)
+    plt.show()    
